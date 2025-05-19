@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { Home, User, LineChart, Bell, ShoppingCart } from "lucide-react";
+import { Home, User, LineChart, Bell, ShoppingCart, Dumbbell } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navItems = [
     { path: "/", icon: Home, label: "Início" },
     { path: "/progresso", icon: LineChart, label: "Progresso" },
+    { path: "/exercicios", icon: Dumbbell, label: "Exercícios" },
     { path: "/lembretes", icon: Bell, label: "Lembretes" },
     { path: "/perfil", icon: User, label: "Perfil" },
   ];
