@@ -14,6 +14,7 @@ import Progress from "./pages/Progress";
 import Reminders from "./pages/Reminders";
 import Profile from "./pages/Profile";
 import Exercises from "./pages/Exercises";
+import NitricAI from "./pages/NitricAI";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/registro" element={<Register />} />
             <Route path="/progresso" element={<Progress />} />
             <Route path="/exercicios" element={<Exercises />} />
+            <Route path="/nitric-ia" element={<NitricAI />} />
             <Route path="/lembretes" element={<Reminders />} />
             <Route path="/perfil" element={<Profile />} />
             <Route path="*" element={<NotFound />} />

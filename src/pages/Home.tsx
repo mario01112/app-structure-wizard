@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
-import { Medal, Pill, Calendar, Zap, ShoppingCart } from "lucide-react";
+import { Medal, Pill, Calendar, Zap, ShoppingCart, Bot } from "lucide-react";
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth();
@@ -65,6 +65,30 @@ const Home = () => {
                   onClick={() => navigate("/progresso")}
                 >
                   Fazer Check-in
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Nitric AI Card - New! */}
+        <Card className="overflow-hidden bg-gradient-to-r from-blue-50 to-purple-50 border-blue-100">
+          <CardContent className="p-4">
+            <div className="flex items-start gap-4">
+              <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center">
+                <Bot className="h-7 w-7 text-nitric-600" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-900">Nitric IA - Novo!</h3>
+                <p className="text-gray-600 text-sm mt-1">
+                  Converse com nossa IA para obter dicas personalizadas, tirar dúvidas e 
+                  receber recomendações para melhorar seus resultados.
+                </p>
+                <Button 
+                  className="mt-3 bg-nitric-600 hover:bg-nitric-700"
+                  onClick={() => navigate("/nitric-ia")}
+                >
+                  Conversar com Nitric IA
                 </Button>
               </div>
             </div>
