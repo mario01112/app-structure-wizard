@@ -77,9 +77,8 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
               <Button 
                 onClick={onMarkComplete}
                 variant={isCompleted ? "outline" : "default"}
-                className={isCompleted ? "" : "bg-nitric-600 hover:bg-nitric-700"}
+                className={`w-full ${isCompleted ? "" : "bg-nitric-600 hover:bg-nitric-700"}`}
                 size="sm"
-                className="w-full"
               >
                 {isCompleted ? "Desmarcar" : "Marcar como feito ✅"}
               </Button>

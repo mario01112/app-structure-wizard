@@ -13,3 +13,8 @@ export interface Category {
   name: string;
   exercises: Exercise[];
 }
+
+// Add CompletedExercises interface to extend the User type
+export interface CompletedExercises {
+  completed: string[];
+}

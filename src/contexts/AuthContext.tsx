@@ -1,6 +1,6 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "sonner";
+import { CompletedExercises } from "@/types/exercises";
 
 export interface User {
   id: string;
@@ -14,6 +14,7 @@ export interface User {
     reminderTime: string;
     notes: string;
   };
+  exercises?: CompletedExercises; // Add the exercises property
 }
 
 interface AuthContextType {
@@ -76,6 +77,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
             weight: 70,
             reminderTime: "08:00",
             notes: "",
+          },
+          exercises: {
+            completed: []
           }
         }
       };
@@ -114,6 +118,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           weight: 0,
           reminderTime: "08:00",
           notes: "",
+        },
+        exercises: {
+          completed: []
         }
       };
       
