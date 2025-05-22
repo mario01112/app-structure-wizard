@@ -1,11 +1,13 @@
+
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "sonner";
 import { CompletedExercises } from "@/types/exercises";
+import { supabase } from "@/integrations/supabase/client";
 
 export interface User {
   id: string;
   name: string;
-  email: string;
+  username: string; // Added username field
   progress: {
     startDate: string;
     lastCheckIn: string;
@@ -14,14 +16,14 @@ export interface User {
     reminderTime: string;
     notes: string;
   };
-  exercises?: CompletedExercises; // Add the exercises property
+  exercises?: CompletedExercises;
 }
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (name: string, email: string, password: string) => Promise<void>;
+  login: (username: string, password: string) => Promise<void>;
+  register: (name: string, username: string, password: string) => Promise<void>;
   logout: () => void;
   updateUserProgress: (progressData: Partial<User['progress']>) => void;
 }
@@ -57,7 +59,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (username: string, password: string) => {
     // In a real app, this would make an API call
     // For demo purposes, we'll simulate a login
     try {
@@ -66,10 +68,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       
       // Demo accounts - in a real app this would be handled by a backend
       const demoUsers: Record<string, User> = {
-        "user@example.com": {
+        "demo": {
           id: "1",
           name: "Usuário Demonstração",
-          email: "user@example.com",
+          username: "demo",
           progress: {
             startDate: new Date().toISOString(),
             lastCheckIn: new Date().toISOString(),
@@ -84,11 +86,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         }
       };
 
-      if (password !== "password" || !demoUsers[email]) {
-        throw new Error("Email ou senha inválidos");
+      // Check if username exists
+      if (!demoUsers[username]) {
+        throw new Error("Usuário não encontrado");
       }
 
-      const userData = demoUsers[email];
+      // Check password (in a real app, would compare hashed passwords)
+      if (password !== "password") {
+        throw new Error("Nome de usuário ou senha incorretos");
+      }
+
+      const userData = demoUsers[username];
       setUser(userData);
       setIsAuthenticated(true);
       localStorage.setItem("user", JSON.stringify(userData));
@@ -101,16 +109,41 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  const register = async (name: string, email: string, password: string) => {
+  const register = async (name: string, username: string, password: string) => {
     try {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // In a real app, check if username is already taken
+      const demoUsers: Record<string, User> = {
+        "demo": {
+          id: "1",
+          name: "Usuário Demonstração",
+          username: "demo",
+          progress: {
+            startDate: new Date().toISOString(),
+            lastCheckIn: new Date().toISOString(),
+            daysCompleted: 0,
+            weight: 70,
+            reminderTime: "08:00",
+            notes: "",
+          },
+          exercises: {
+            completed: []
+          }
+        }
+      };
+
+      // Check if username already exists
+      if (demoUsers[username]) {
+        throw new Error("Nome de usuário já está em uso");
+      }
       
       // Create a new user (in a real app this would be handled by a backend)
       const newUser: User = {
         id: Date.now().toString(),
         name,
-        email,
+        username,
         progress: {
           startDate: new Date().toISOString(),
           lastCheckIn: new Date().toISOString(),

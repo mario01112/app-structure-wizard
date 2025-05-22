@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { 
   Card, 
@@ -16,21 +16,29 @@ import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      await login(email, password);
+      await login(username, password);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);
+      // Error message is handled by the context via toast
     } finally {
       setIsLoading(false);
     }
@@ -54,14 +62,14 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="username">Nome de Usuário</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="seu@email.com"
+                  id="username"
+                  type="text"
+                  placeholder="Seu nome de usuário"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="h-12"
                 />
               </div>
@@ -85,7 +93,7 @@ const Login = () => {
               
               <div className="text-xs text-gray-500 mt-2">
                 <p>Para demonstração, use:</p>
-                <p>Email: user@example.com</p>
+                <p>Usuário: demo</p>
                 <p>Senha: password</p>
               </div>
             </CardContent>
