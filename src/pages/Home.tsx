@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
-import { Medal, Pill, Calendar, Zap, ShoppingCart, Bot } from "lucide-react";
+import { Medal, Pill, Calendar, Zap, ShoppingCart, Bot, Dumbbell, FlaskConical, ChevronRight } from "lucide-react";
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth();
@@ -30,17 +30,82 @@ const Home = () => {
   return (
     <Layout>
       <div className="space-y-6 py-6 relative z-10">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            Olá, {user.name.split(' ')[0]}!
-          </h1>
-          {daysSinceStart > 0 && (
-            <div className="bg-gradient-to-r from-nitric-600 to-nitric-700 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-lg animate-pulse">
-              <Calendar className="h-3 w-3 mr-1" />
-              Dia {daysSinceStart}
+        {/* Hero Section with Background Image */}
+        <div className="relative rounded-xl overflow-hidden mb-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-nitric-600/90 to-purple-900/80 z-10"></div>
+          <div 
+            className="h-48 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1740&auto=format&fit=crop')` 
+            }}
+          ></div>
+          <div className="absolute inset-0 z-20 flex flex-col justify-center p-6">
+            <div className="flex justify-between items-center">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Olá, {user.name.split(' ')[0]}!
+              </h1>
+              {daysSinceStart > 0 && (
+                <div className="bg-gradient-to-r from-nitric-600 to-nitric-700 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-lg animate-pulse">
+                  <Calendar className="h-3 w-3 mr-1" />
+                  Dia {daysSinceStart}
+                </div>
+              )}
             </div>
-          )}
+            <p className="text-white/90 mt-2 max-w-md">
+              Maximize seu potencial com Nitric Boost. Treine melhor, recupere mais rápido.
+            </p>
+          </div>
         </div>
+
+        {/* Supplement Feature Card */}
+        <Card className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 mb-6">
+          <CardContent className="p-0">
+            <div className="flex flex-col sm:flex-row">
+              <div className="sm:w-1/2 flex items-center justify-center p-6 bg-gradient-to-br from-nitric-600/20 to-purple-900/20">
+                <div className="w-40 h-64 bg-contain bg-center bg-no-repeat animate-float" 
+                  style={{ 
+                    backgroundImage: `url('https://images.unsplash.com/photo-1594824986489-045676d7b9d0?q=80&w=987&auto=format&fit=crop')`,
+                    backgroundSize: '100% auto'
+                  }}>
+                </div>
+              </div>
+              <div className="sm:w-1/2 p-6">
+                <h2 className="text-2xl font-bold text-white mb-4">Nitric Boost Ultra</h2>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-gray-200">
+                    <div className="h-8 w-8 rounded-full bg-gradient-to-br from-nitric-600 to-purple-700 flex items-center justify-center mr-3 shadow-lg">
+                      <Zap className="h-4 w-4 text-white" />
+                    </div>
+                    <span>Aumento de energia</span>
+                  </li>
+                  <li className="flex items-center text-gray-200">
+                    <div className="h-8 w-8 rounded-full bg-gradient-to-br from-nitric-600 to-purple-700 flex items-center justify-center mr-3 shadow-lg">
+                      <FlaskConical className="h-4 w-4 text-white" />
+                    </div>
+                    <span>Formulação de alta potência</span>
+                  </li>
+                  <li className="flex items-center text-gray-200">
+                    <div className="h-8 w-8 rounded-full bg-gradient-to-br from-nitric-600 to-purple-700 flex items-center justify-center mr-3 shadow-lg">
+                      <Medal className="h-4 w-4 text-white" />
+                    </div>
+                    <span>Resultados comprovados</span>
+                  </li>
+                </ul>
+                <a 
+                  href="https://getnitricboost.net/discovery#aff=Preciosa88"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 block"
+                >
+                  <Button className="w-full py-6 bg-gradient-to-r from-nitric-600 to-red-600 hover:from-nitric-700 hover:to-red-700 text-white shadow-lg transition-all duration-300 hover:scale-105 group">
+                    <ShoppingCart className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                    Comprar Nitric Boost
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Daily checkin card */}
         <Card className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-gray-900 to-gray-800">
@@ -72,6 +137,61 @@ const Home = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Training Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <Card 
+            onClick={() => navigate("/exercicios")}
+            className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 cursor-pointer hover:transform hover:scale-105 transition-all duration-300"
+          >
+            <div className="h-40 bg-cover bg-center relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?q=80&w=1469&auto=format&fit=crop" 
+                alt="Exercícios" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <CardContent className="p-4 relative">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Dumbbell className="h-5 w-5 text-nitric-600 mr-2" />
+                  <h3 className="font-semibold text-lg text-white">Exercícios</h3>
+                </div>
+                <ChevronRight className="h-5 w-5 text-gray-400" />
+              </div>
+              <p className="text-sm text-gray-300 mt-1">
+                Treinos para maximizar seus resultados
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card 
+            onClick={() => navigate("/nitric-ia")}
+            className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 cursor-pointer hover:transform hover:scale-105 transition-all duration-300"
+          >
+            <div className="h-40 bg-cover bg-center relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1578269174936-2709b6aeb913?q=80&w=1471&auto=format&fit=crop" 
+                alt="Nitric IA" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <CardContent className="p-4 relative">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Bot className="h-5 w-5 text-blue-500 mr-2" />
+                  <h3 className="font-semibold text-lg text-white">Nitric IA</h3>
+                </div>
+                <ChevronRight className="h-5 w-5 text-gray-400" />
+              </div>
+              <p className="text-sm text-gray-300 mt-1">
+                Converse com nossa IA para obter dicas personalizadas
+              </p>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Nitric AI Card */}
         <Card className="overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 border-blue-900/30">
@@ -117,40 +237,6 @@ const Home = () => {
               </div>
               <h3 className="font-medium text-white">Benefícios</h3>
               <p className="text-xs text-gray-400 mt-1">Resultados esperados</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Buy now button */}
-        <div className="mt-8">
-          <a 
-            href="https://getnitricboost.net/discovery#aff=Preciosa88"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <Button className="w-full py-6 text-lg bg-gradient-to-r from-nitric-600 to-red-600 hover:from-nitric-700 hover:to-red-700 text-white shadow-lg transition-all duration-300 hover:scale-105 group">
-              <ShoppingCart className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-              Comprar Nitric Boost
-            </Button>
-          </a>
-        </div>
-
-        {/* Info cards */}
-        <div className="mt-6 space-y-4">
-          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-none shadow-lg">
-            <CardContent className="p-5">
-              <div className="flex items-start">
-                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center mr-4 shadow-lg">
-                  <Medal className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-medium text-white">Resultado Garantido</h3>
-                  <p className="text-sm text-gray-400 mt-1">
-                    O Nitric Boost foi formulado para melhorar seu desempenho físico e saúde
-                  </p>
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
