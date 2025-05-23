@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Calendar, User as UserIcon, Mail, Settings, LogOut, Shield, CalendarClock } from "lucide-react";
+import { Calendar, User as UserIcon, Mail, Settings, LogOut, Shield, CalendarClock, ShoppingCart, ExternalLink } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -65,6 +65,68 @@ const Profile = () => {
             </h1>
             <p className="text-gray-400">Gerencie suas informações pessoais</p>
           </div>
+        </div>
+
+        {/* Nitric Boost Product Highlight */}
+        <div className="relative z-10">
+          <Card className="shadow-2xl border-0 bg-gradient-to-br from-orange-900/90 to-red-900/90 backdrop-blur-md overflow-hidden animate-scale-in border-t border-orange-500/30">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 to-red-600/10"></div>
+            
+            <CardHeader className="pb-6 border-b border-orange-700/50 relative z-10">
+              <CardTitle className="text-2xl text-white flex items-center gap-3">
+                <ShoppingCart className="h-6 w-6 text-orange-400" />
+                Potencialize Seus Resultados
+              </CardTitle>
+              <CardDescription className="text-orange-200">
+                Acelere seu progresso com o suplemento oficial
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="p-6 relative z-10">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/45e5eae0-a4d7-4cf8-8c25-b202da25a027.png" 
+                    alt="Nitric Boost Ultra" 
+                    className="w-48 h-auto rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                
+                <div className="flex-1 space-y-4 text-center md:text-left">
+                  <h3 className="text-2xl font-bold text-white">Nitric Boost Ultra</h3>
+                  <p className="text-orange-200 leading-relaxed">
+                    O suplemento premium que potencializa seus treinos e acelera seus resultados. 
+                    Fórmula avançada para máxima performance e energia.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                    <a
+                      href="https://getnitricboost.net/discovery#aff=Preciosa88"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                    >
+                      <ShoppingCart className="h-5 w-5 mr-2" />
+                      Comprar Agora
+                      <ExternalLink className="h-4 w-4 ml-2" />
+                    </a>
+                    
+                    <Button 
+                      variant="outline"
+                      className="bg-transparent border-2 border-orange-400/50 text-orange-200 hover:bg-orange-900/30 hover:text-orange-100 transition-all duration-300"
+                    >
+                      Saiba Mais
+                    </Button>
+                  </div>
+                  
+                  <div className="flex items-center justify-center md:justify-start text-sm text-orange-300">
+                    <Shield className="h-4 w-4 mr-1" />
+                    Garantia de 90 dias ou seu dinheiro de volta
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Main Profile Card */}
