@@ -7,12 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
+import { Progress as ProgressBar } from "@/components/ui/progress";
 import { useAuth } from "@/contexts/AuthContext";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { toast } from "sonner";
-import { Calendar, TrendingUp, CheckCircle, Target, Zap, Trophy, Fire } from "lucide-react";
+import { Calendar, TrendingUp, CheckCircle, Target, Zap, Trophy, Flame } from "lucide-react";
 
 const Progress = () => {
   const { user, isAuthenticated, updateUserProgress } = useAuth();
@@ -91,7 +91,7 @@ const Progress = () => {
           <Card className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-orange-500/20 shadow-2xl animate-scale-in">
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl text-white flex items-center gap-3">
-                <Fire className="h-6 w-6 text-orange-500" />
+                <Flame className="h-6 w-6 text-orange-500" />
                 Visão Geral do Progresso
               </CardTitle>
             </CardHeader>
@@ -115,7 +115,7 @@ const Progress = () => {
                   <Target className="h-8 w-8 text-purple-400 mb-3 mx-auto" />
                   <p className="text-purple-300 text-sm text-center mb-2">Meta de 30 Dias</p>
                   <div className="space-y-2">
-                    <Progress value={progressPercentage} className="h-3" />
+                    <ProgressBar value={progressPercentage} className="h-3" />
                     <p className="text-white text-center text-lg font-semibold">
                       {Math.round(progressPercentage)}%
                     </p>
