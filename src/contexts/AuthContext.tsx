@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "sonner";
 import { CompletedExercises } from "@/types/exercises";
@@ -8,6 +7,7 @@ export interface User {
   id: string;
   name: string;
   username: string; // Added username field
+  createdAt?: string; // Added createdAt as optional
   progress: {
     startDate: string;
     lastCheckIn: string;
@@ -72,6 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           id: "1",
           name: "Usuário Demonstração",
           username: "demo",
+          createdAt: new Date().toISOString(), // Add createdAt
           progress: {
             startDate: new Date().toISOString(),
             lastCheckIn: new Date().toISOString(),
@@ -120,6 +121,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           id: "1",
           name: "Usuário Demonstração",
           username: "demo",
+          createdAt: new Date().toISOString(), // Add createdAt
           progress: {
             startDate: new Date().toISOString(),
             lastCheckIn: new Date().toISOString(),
@@ -144,6 +146,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         id: Date.now().toString(),
         name,
         username,
+        createdAt: new Date().toISOString(), // Add createdAt
         progress: {
           startDate: new Date().toISOString(),
           lastCheckIn: new Date().toISOString(),
