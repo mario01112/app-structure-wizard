@@ -50,7 +50,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-black via-gray-900 to-red-950 text-foreground min-h-screen;
+    background-attachment: fixed;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -62,131 +63,22 @@
   transition: stroke-dashoffset 0.5s ease;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-scale-in {
-  animation: scale-in 0.5s ease-out;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
-}
-
+/* Novas animações de energia e vitalidade */
 @keyframes energy-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6), 0 0 40px rgba(34, 197, 94, 0.4);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 40px rgba(255, 69, 0, 0.8);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 0 0 60px rgba(34, 197, 94, 0.6);
     transform: scale(1.05);
   }
 }
 
-.animate-energy-pulse {
-  animation: energy-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Enhanced button hover effects */
-.button-glow:hover {
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Smooth page transitions */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.page-transition-exit {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
-.page-transition-exit-active {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 300ms, transform 300ms;
-}
-
-/* Exercise completion animations */
-@keyframes completion-burst {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.animate-completion-burst {
-  animation: completion-burst 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* Gradient text animation */
-@keyframes gradient-shift {
+@keyframes vitality-glow {
   0%, 100% {
+    background: linear-gradient(45deg, #ef4444, #dc2626, #22c55e, #16a34a);
+    background-size: 400% 400%;
     background-position: 0% 50%;
   }
   50% {
@@ -194,11 +86,175 @@
   }
 }
 
-.animate-gradient-text {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient-shift 4s ease infinite;
+@keyframes floating-avatar {
+  0%, 100% {
+    transform: translateY(0px) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotateY(5deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateY(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotateY(-5deg);
+  }
+}
+
+@keyframes text-energy {
+  0%, 100% {
+    background: linear-gradient(-45deg, #ef4444, #dc2626, #22c55e, #16a34a);
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes completion-energy {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0;
+    box-shadow: 0 0 0px rgba(239, 68, 68, 0);
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 60px rgba(34, 197, 94, 0.6);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6), 0 0 40px rgba(34, 197, 94, 0.4);
+  }
+}
+
+@keyframes button-power {
+  0% {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    transform: translateY(0px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.6), 0 0 30px rgba(34, 197, 94, 0.3);
+  }
+  100% {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    transform: translateY(0px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+  }
+}
+
+.animate-energy-pulse {
+  animation: energy-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-vitality-glow {
+  animation: vitality-glow 4s ease infinite;
+}
+
+.animate-floating-avatar {
+  animation: floating-avatar 6s ease-in-out infinite;
+}
+
+.animate-text-energy {
+  animation: text-energy 3s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.animate-completion-energy {
+  animation: completion-energy 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-button-power {
+  animation: button-power 2s ease-in-out infinite;
+}
+
+/* Gradientes de fundo personalizados */
+.bg-main-gradient {
+  background: linear-gradient(135deg, #000000 0%, #1f2937 25%, #7f1d1d 50%, #059669 75%, #000000 100%);
+  background-size: 400% 400%;
+  animation: vitality-glow 8s ease infinite;
+}
+
+.bg-energy-gradient {
+  background: linear-gradient(45deg, #ef4444, #dc2626, #22c55e, #16a34a);
+  background-size: 400% 400%;
+  animation: vitality-glow 3s ease infinite;
+}
+
+.bg-dark-elegant {
+  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(31,41,55,0.8) 50%, rgba(127,29,29,0.7) 100%);
+  backdrop-filter: blur(10px);
+}
+
+/* Efeitos de hover melhorados */
+.hover-energy:hover {
+  animation: energy-pulse 1s ease-in-out;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6), 0 0 60px rgba(34, 197, 94, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Animações de transição de página melhoradas */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+/* Animações específicas para exercícios */
+@keyframes exercise-complete {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+  }
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    background: linear-gradient(45deg, #22c55e, #16a34a);
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.8);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    background: linear-gradient(45deg, #ef4444, #22c55e);
+  }
+}
+
+.animate-exercise-complete {
+  animation: exercise-complete 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Avatar 3D effects */
+.avatar-3d {
+  background: linear-gradient(135deg, #ef4444, #dc2626, #22c55e);
+  box-shadow: 
+    0 0 20px rgba(239, 68, 68, 0.5),
+    inset 0 0 20px rgba(34, 197, 94, 0.3);
+  border: 2px solid rgba(34, 197, 94, 0.5);
+}
+
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-energy-pulse,
+  .animate-vitality-glow,
+  .animate-floating-avatar,
+  .animate-text-energy,
+  .animate-completion-energy,
+  .animate-button-power {
+    animation: none;
+  }
 }
