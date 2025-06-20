@@ -24,7 +24,7 @@ const Avatar3D = ({ name, type = 'male', size = 'md', interactive = true }: Avat
       rotateX: 0,
       transition: {
         duration: 2,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         repeat: Infinity,
         repeatType: "reverse" as const
       }
@@ -35,7 +35,7 @@ const Avatar3D = ({ name, type = 'male', size = 'md', interactive = true }: Avat
       rotateX: 5,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -45,7 +45,7 @@ const Avatar3D = ({ name, type = 'male', size = 'md', interactive = true }: Avat
       y: [-5, 5, -5],
       transition: {
         duration: 3,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         repeat: Infinity
       }
     }
@@ -58,7 +58,7 @@ const Avatar3D = ({ name, type = 'male', size = 'md', interactive = true }: Avat
       rotate: [0, 180, 360],
       transition: {
         duration: 2,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         repeat: Infinity,
         delay: 0.5
       }

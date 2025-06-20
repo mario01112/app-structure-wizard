@@ -63,8 +63,8 @@ const Exercises = () => {
   };
 
   const pageTransition = {
-    type: "tween",
-    ease: "anticipate",
+    type: "tween" as const,
+    ease: "anticipate" as const,
     duration: 0.5
   };
 
@@ -186,12 +186,15 @@ const Exercises = () => {
               animate={{
                 boxShadow: [
                   "0 0 20px rgba(239, 68, 68, 0.5)",
-                  "0 0 40px rgba(34, 197, 94, 0.7)",
-                  "0 0 20px rgba(239, 68, 68, 0.5)"
+                  "0 0 40px rgba(34, 197, 94, 0.7)"
                 ]
               }}
               transition={{
-                boxShadow: { duration: 2, repeat: Infinity }
+                boxShadow: { 
+                  duration: 2, 
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }
               }}
             >
               <Target className="h-8 w-8" />

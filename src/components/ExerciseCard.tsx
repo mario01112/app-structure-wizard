@@ -46,7 +46,7 @@ const ExerciseCard = ({ exercise, isCompleted, onComplete, index }: ExerciseCard
       transition: {
         duration: 0.6,
         delay: index * 0.2,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     },
     hover: {
@@ -54,7 +54,7 @@ const ExerciseCard = ({ exercise, isCompleted, onComplete, index }: ExerciseCard
       y: -5,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -73,7 +73,10 @@ const ExerciseCard = ({ exercise, isCompleted, onComplete, index }: ExerciseCard
     visible: { 
       opacity: 1, 
       height: "auto",
-      transition: { duration: 0.4, ease: "easeInOut" }
+      transition: { 
+        duration: 0.4, 
+        ease: "easeInOut" as const 
+      }
     }
   };
 
