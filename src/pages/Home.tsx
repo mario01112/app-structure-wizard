@@ -36,8 +36,8 @@ const Home = () => {
   };
 
   const pageTransition = {
-    type: "tween",
-    ease: "anticipate",
+    type: "tween" as const,
+    ease: "anticipate" as const,
     duration: 0.5
   };
 
@@ -82,7 +82,7 @@ const Home = () => {
             transition={{
               duration: 6,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut" as const
             }}
           />
           <motion.div 
@@ -94,7 +94,7 @@ const Home = () => {
             transition={{
               duration: 6,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "easeInOut" as const,
               delay: 3
             }}
           />
@@ -117,7 +117,7 @@ const Home = () => {
               initial={{ scale: 0, rotateY: -180 }}
               animate={{ scale: 1, rotateY: 0 }}
               transition={{ 
-                type: "spring", 
+                type: "spring" as const, 
                 stiffness: 260, 
                 damping: 20,
                 delay: 0.5 
@@ -159,17 +159,10 @@ const Home = () => {
                   animate={{ scale: 1 }}
                   transition={{ 
                     delay: 1.2, 
-                    type: "spring", 
+                    type: "spring" as const, 
                     stiffness: 300 
                   }}
                   whileHover={{ scale: 1.05 }}
-                  animate={{
-                    boxShadow: [
-                      "0 0 20px rgba(239, 68, 68, 0.5)",
-                      "0 0 40px rgba(34, 197, 94, 0.7)",
-                      "0 0 20px rgba(239, 68, 68, 0.5)"
-                    ]
-                  }}
                 >
                   <Trophy className="h-6 w-6" />
                   Dia {daysSinceStart} de Transformação
@@ -207,7 +200,7 @@ const Home = () => {
             {/* Card de Exercícios */}
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: "spring" as const, stiffness: 300 }}
             >
               <Card 
                 onClick={() => navigate("/exercicios")}
@@ -225,7 +218,7 @@ const Home = () => {
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: "easeInOut" as const
                       }}
                     >
                       <Dumbbell className="h-8 w-8 text-white" />
@@ -246,7 +239,7 @@ const Home = () => {
             {/* Card do Nitric IA */}
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: "spring" as const, stiffness: 300 }}
             >
               <Card 
                 onClick={() => navigate("/nitric-ia")}
@@ -264,7 +257,7 @@ const Home = () => {
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        ease: "easeInOut",
+                        ease: "easeInOut" as const,
                         delay: 1.5
                       }}
                     >
@@ -296,7 +289,7 @@ const Home = () => {
                       scale: [1, 1.05, 1]
                     }}
                     transition={{
-                      rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                      rotate: { duration: 20, repeat: Infinity, ease: "linear" as const },
                       scale: { duration: 4, repeat: Infinity }
                     }}
                   >
@@ -345,7 +338,7 @@ const Home = () => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05, y: -3 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: "spring" as const, stiffness: 300 }}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 className={`transition-opacity delay-[${item.delay * 1000}ms]`}
@@ -364,7 +357,7 @@ const Home = () => {
                       transition={{
                         duration: 2,
                         repeat: Infinity,
-                        ease: "easeInOut",
+                        ease: "easeInOut" as const,
                         delay: item.delay
                       }}
                     >
