@@ -7,7 +7,7 @@ import Avatar3D from "@/components/Avatar3D";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
-import { Medal, Pill, Calendar, Zap, ShoppingCart, Bot, Dumbbell, FlaskConical, ChevronRight, Sparkles, Heart, Trophy } from "lucide-react";
+import { Medal, Pill, Calendar, Zap, ShoppingCart, Bot, Dumbbell, FlaskConical, ChevronRight, Sparkles, Heart, Trophy, Star } from "lucide-react";
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth();
@@ -216,7 +216,7 @@ const Home = () => {
 
           {/* Feature Cards with Product Images */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={itemVariants}
           >
             {/* Exercise Card */}
@@ -272,7 +272,7 @@ const Home = () => {
               transition={{ type: "spring" as const, stiffness: 300 }}
             >
               <Card 
-                onClick={() => navigate("/nitric-ai")}
+                onClick={() => navigate("/nitric-ia")}
                 className="bg-gradient-to-br from-slate-900/90 to-cyan-900/90 border-cyan-600/30 cursor-pointer transition-all duration-500 overflow-hidden group backdrop-blur-sm"
               >
                 <CardContent className="p-8 relative">
@@ -307,6 +307,54 @@ const Home = () => {
                     </p>
                     <div className="flex items-center text-cyan-400 font-semibold">
                       <span>Chat Now</span>
+                      <ChevronRight className="h-5 w-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Success Stories Card - NEW */}
+            <motion.div
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring" as const, stiffness: 300 }}
+            >
+              <Card 
+                onClick={() => navigate("/marketing")}
+                className="bg-gradient-to-br from-slate-900/90 to-yellow-900/90 border-yellow-600/30 cursor-pointer transition-all duration-500 overflow-hidden group backdrop-blur-sm"
+              >
+                <CardContent className="p-8 relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-transparent group-hover:from-yellow-600/40 transition-all duration-300"></div>
+                  <div className="relative z-10 space-y-4">
+                    {/* Customer Image */}
+                    <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-yellow-400/50">
+                      <img 
+                        src="/lovable-uploads/e197ea23-3acd-4f82-94fd-c58e338809df.png" 
+                        alt="Success Story"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <motion.div 
+                      className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-yellow-700 rounded-full flex items-center justify-center mb-4"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 10, -10, 0]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut" as const,
+                        delay: 3
+                      }}
+                    >
+                      <Star className="h-8 w-8 text-white" />
+                    </motion.div>
+                    <h3 className="text-2xl font-bold text-white">Success Stories</h3>
+                    <p className="text-gray-300 text-lg">
+                      Real testimonials, growth stats, and VIP community access
+                    </p>
+                    <div className="flex items-center text-yellow-400 font-semibold">
+                      <span>View Success</span>
                       <ChevronRight className="h-5 w-5 ml-2 group-hover:translate-x-2 transition-transform" />
                     </div>
                   </div>

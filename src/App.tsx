@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import PurchaseInterceptorProvider from "@/components/PurchaseInterceptorProvider";
+import WelcomeModal from "@/components/marketing/WelcomeModal";
 
 // Pages
 import Home from "./pages/Home";
@@ -16,6 +17,7 @@ import Reminders from "./pages/Reminders";
 import Profile from "./pages/Profile";
 import Exercises from "./pages/Exercises";
 import NitricAI from "./pages/NitricAI";
+import Marketing from "./pages/Marketing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +27,7 @@ const App = () => (
     <TooltipProvider>
       <AuthProvider>
         <PurchaseInterceptorProvider>
+          <WelcomeModal />
           <Toaster />
           <Sonner />
           <BrowserRouter>
@@ -35,6 +38,7 @@ const App = () => (
               <Route path="/progresso" element={<Progress />} />
               <Route path="/exercicios" element={<Exercises />} />
               <Route path="/nitric-ia" element={<NitricAI />} />
+              <Route path="/marketing" element={<Marketing />} />
               <Route path="/lembretes" element={<Reminders />} />
               <Route path="/perfil" element={<Profile />} />
               <Route path="*" element={<NotFound />} />

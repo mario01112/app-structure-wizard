@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { Home, User, LineChart, Bell, ShoppingCart, Dumbbell, Bot } from "lucide-react";
+import { Home, User, LineChart, Bell, ShoppingCart, Dumbbell, Bot, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
@@ -16,6 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { path: "/progresso", icon: LineChart, label: "Progress" },
     { path: "/exercicios", icon: Dumbbell, label: "Exercises" },
     { path: "/nitric-ia", icon: Bot, label: "Nitric AI" },
+    { path: "/marketing", icon: Star, label: "Success" },
     { path: "/lembretes", icon: Bell, label: "Reminders" },
     { path: "/perfil", icon: User, label: "Profile" },
   ];
