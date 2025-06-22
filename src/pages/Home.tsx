@@ -70,11 +70,11 @@ const Home = () => {
         variants={pageVariants}
         transition={pageTransition}
       >
-        {/* Background effects */}
-        <div className="fixed inset-0 bg-main-gradient opacity-90"></div>
+        {/* Background effects with blue theme */}
+        <div className="fixed inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-cyan-950 opacity-90"></div>
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
-            className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-red-600/30 to-green-600/20 rounded-full blur-3xl"
+            className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-600/30 to-cyan-600/20 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.3, 1],
               opacity: [0.3, 0.6, 0.3]
@@ -86,7 +86,7 @@ const Home = () => {
             }}
           />
           <motion.div 
-            className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-green-600/30 to-red-600/20 rounded-full blur-3xl"
+            className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-cyan-600/30 to-blue-600/20 rounded-full blur-3xl"
             animate={{
               scale: [1.3, 1, 1.3],
               opacity: [0.6, 0.3, 0.6]
@@ -106,11 +106,33 @@ const Home = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* Hero Section com Avatar 3D */}
+          {/* Hero Section with Product Image and Avatar */}
           <motion.div 
             className="text-center space-y-6 py-12"
             variants={itemVariants}
           >
+            {/* Product Image Hero */}
+            <motion.div 
+              className="flex justify-center mb-8"
+              initial={{ scale: 0, rotateY: -180 }}
+              animate={{ scale: 1, rotateY: 0 }}
+              transition={{ 
+                type: "spring" as const, 
+                stiffness: 260, 
+                damping: 20,
+                delay: 0.3 
+              }}
+            >
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/edc72c6e-e923-42b6-a59f-c944034f462e.png" 
+                  alt="Nitric Boost Ultra"
+                  className="w-64 h-64 object-contain filter drop-shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-full blur-xl"></div>
+              </div>
+            </motion.div>
+
             {/* Avatar 3D */}
             <motion.div 
               className="flex justify-center mb-8"
@@ -124,37 +146,37 @@ const Home = () => {
               }}
             >
               <Avatar3D 
-                name={user.name || "Guerreiro"}
+                name={user.name || "Champion"}
                 type="male"
                 size="lg"
                 interactive={true}
               />
             </motion.div>
 
-            {/* Frase animada de boas-vindas */}
+            {/* Welcome message in English */}
             <motion.div 
               className="space-y-4"
               variants={itemVariants}
             >
               <motion.h1 
-                className="text-5xl md:text-6xl font-bold animate-text-energy"
+                className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
               >
-                Olá, {user.name?.split(' ')[0] || 'Guerreiro'}! 
+                Hello, {user.name?.split(' ')[0] || 'Champion'}! 
               </motion.h1>
               <motion.p 
-                className="text-2xl md:text-3xl font-semibold text-white animate-text-energy"
+                className="text-2xl md:text-3xl font-semibold text-white bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent"
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.6 }}
               >
-                Sua jornada de potência e vitalidade começa agora 💪🔥
+                Your journey to power and vitality starts now 💪🔥
               </motion.p>
               {daysSinceStart > 0 && (
                 <motion.div 
-                  className="inline-flex items-center gap-2 bg-energy-gradient text-white px-6 py-3 rounded-full text-lg font-bold shadow-2xl"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-full text-lg font-bold shadow-2xl"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ 
@@ -165,14 +187,14 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <Trophy className="h-6 w-6" />
-                  Dia {daysSinceStart} de Transformação
+                  Day {daysSinceStart} of Transformation
                   <Heart className="h-6 w-6 animate-pulse" />
                 </motion.div>
               )}
             </motion.div>
           </motion.div>
 
-          {/* Botão Principal CTA */}
+          {/* Main CTA Button */}
           <motion.div 
             className="text-center"
             variants={itemVariants}
@@ -185,32 +207,40 @@ const Home = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="text-2xl font-bold py-8 px-12 bg-energy-gradient hover:scale-110 transition-all duration-300 shadow-2xl animate-button-power rounded-2xl">
-                🔥 QUERO O MEU AGORA 🔥
+              <Button className="text-2xl font-bold py-8 px-12 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 hover:scale-110 transition-all duration-300 shadow-2xl rounded-2xl border-2 border-white/20">
+                🔥 GET MINE NOW 🔥
                 <ShoppingCart className="h-8 w-8 ml-3" />
               </Button>
             </motion.a>
           </motion.div>
 
-          {/* Cards de Funcionalidades */}
+          {/* Feature Cards with Product Images */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
             variants={itemVariants}
           >
-            {/* Card de Exercícios */}
+            {/* Exercise Card */}
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
               transition={{ type: "spring" as const, stiffness: 300 }}
             >
               <Card 
-                onClick={() => navigate("/exercicios")}
-                className="bg-dark-elegant border-red-600/30 cursor-pointer hover-energy hover-glow transition-all duration-500 overflow-hidden group"
+                onClick={() => navigate("/exercises")}
+                className="bg-gradient-to-br from-slate-900/90 to-blue-900/90 border-blue-600/30 cursor-pointer transition-all duration-500 overflow-hidden group backdrop-blur-sm"
               >
                 <CardContent className="p-8 relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-transparent group-hover:from-red-600/40 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent group-hover:from-blue-600/40 transition-all duration-300"></div>
                   <div className="relative z-10 space-y-4">
+                    {/* Customer Image */}
+                    <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-blue-400/50">
+                      <img 
+                        src="/lovable-uploads/b160f4a0-4686-4b34-b029-0f7cda1f0725.png" 
+                        alt="Happy Customer"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-700 rounded-full flex items-center justify-center mb-4"
+                      className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-4"
                       animate={{
                         scale: [1, 1.1, 1],
                         rotate: [0, 5, -5, 0]
@@ -223,12 +253,12 @@ const Home = () => {
                     >
                       <Dumbbell className="h-8 w-8 text-white" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-white">Exercícios de Potência</h3>
+                    <h3 className="text-2xl font-bold text-white">Power Exercises</h3>
                     <p className="text-gray-300 text-lg">
-                      Treinos específicos para maximizar sua energia e vitalidade
+                      Specific workouts to maximize your energy and vitality
                     </p>
-                    <div className="flex items-center text-red-400 font-semibold">
-                      <span>Começar treino</span>
+                    <div className="flex items-center text-blue-400 font-semibold">
+                      <span>Start Training</span>
                       <ChevronRight className="h-5 w-5 ml-2 group-hover:translate-x-2 transition-transform" />
                     </div>
                   </div>
@@ -236,20 +266,28 @@ const Home = () => {
               </Card>
             </motion.div>
 
-            {/* Card do Nitric IA */}
+            {/* Nitric AI Card */}
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
               transition={{ type: "spring" as const, stiffness: 300 }}
             >
               <Card 
-                onClick={() => navigate("/nitric-ia")}
-                className="bg-dark-elegant border-green-600/30 cursor-pointer hover-energy hover-glow transition-all duration-500 overflow-hidden group"
+                onClick={() => navigate("/nitric-ai")}
+                className="bg-gradient-to-br from-slate-900/90 to-cyan-900/90 border-cyan-600/30 cursor-pointer transition-all duration-500 overflow-hidden group backdrop-blur-sm"
               >
                 <CardContent className="p-8 relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 to-transparent group-hover:from-green-600/40 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-transparent group-hover:from-cyan-600/40 transition-all duration-300"></div>
                   <div className="relative z-10 space-y-4">
+                    {/* Customer Image */}
+                    <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-cyan-400/50">
+                      <img 
+                        src="/lovable-uploads/90990a71-17fe-4221-95da-493d29fe9687.png" 
+                        alt="Satisfied Customer"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-700 rounded-full flex items-center justify-center mb-4"
+                      className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center mb-4"
                       animate={{
                         scale: [1, 1.1, 1],
                         rotate: [0, -5, 5, 0]
@@ -263,12 +301,12 @@ const Home = () => {
                     >
                       <Bot className="h-8 w-8 text-white" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-white">Nitric IA</h3>
+                    <h3 className="text-2xl font-bold text-white">Nitric AI</h3>
                     <p className="text-gray-300 text-lg">
-                      Seu coach virtual para saúde, bem-estar e performance máxima
+                      Your virtual coach for health, wellness and maximum performance
                     </p>
-                    <div className="flex items-center text-green-400 font-semibold">
-                      <span>Conversar agora</span>
+                    <div className="flex items-center text-cyan-400 font-semibold">
+                      <span>Chat Now</span>
                       <ChevronRight className="h-5 w-5 ml-2 group-hover:translate-x-2 transition-transform" />
                     </div>
                   </div>
@@ -277,11 +315,19 @@ const Home = () => {
             </motion.div>
           </motion.div>
 
-          {/* Check-in Diário */}
+          {/* Daily Check-in with Customer Image */}
           <motion.div variants={itemVariants}>
-            <Card className="bg-dark-elegant border-red-600/50 overflow-hidden">
+            <Card className="bg-gradient-to-br from-slate-900/90 to-blue-900/90 border-blue-600/50 overflow-hidden backdrop-blur-sm">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Customer testimonial image */}
+                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-400/50">
+                    <img 
+                      src="/lovable-uploads/e197ea23-3acd-4f82-94fd-c58e338809df.png" 
+                      alt="Customer Testimonial"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <motion.div 
                     className="relative"
                     animate={{
@@ -293,29 +339,29 @@ const Home = () => {
                       scale: { duration: 4, repeat: Infinity }
                     }}
                   >
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-600/30 to-green-600/30 flex items-center justify-center shadow-inner">
-                      <div className="w-24 h-24 rounded-full bg-energy-gradient flex items-center justify-center">
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center shadow-inner">
+                      <div className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
                         <div className="text-center">
                           <div className="text-4xl font-bold text-white">{user.progress.daysCompleted}</div>
-                          <div className="text-sm text-gray-200">dias</div>
+                          <div className="text-sm text-gray-200">days</div>
                         </div>
                       </div>
                     </div>
                   </motion.div>
                   <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-3xl font-bold text-white mb-4">Check-in Diário de Energia</h3>
+                    <h3 className="text-3xl font-bold text-white mb-4">Daily Energy Check-in</h3>
                     <p className="text-gray-300 text-lg mb-6">
-                      Registre seu progresso e mantenha a chama da transformação acesa 🔥
+                      Track your progress and keep the flame of transformation burning 🔥
                     </p>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <Button 
-                        className="text-xl font-bold py-6 px-8 bg-energy-gradient hover:scale-105 transition-all duration-300 shadow-xl"
-                        onClick={() => navigate("/progresso")}
+                        className="text-xl font-bold py-6 px-8 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 hover:scale-105 transition-all duration-300 shadow-xl"
+                        onClick={() => navigate("/progress")}
                       >
-                        ⚡ Check-in Agora ⚡
+                        ⚡ Check-in Now ⚡
                       </Button>
                     </motion.div>
                   </div>
@@ -324,16 +370,16 @@ const Home = () => {
             </Card>
           </motion.div>
 
-          {/* Grid de Ações Rápidas */}
+          {/* Quick Actions Grid */}
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
             variants={itemVariants}
           >
             {[
-              { icon: Pill, title: "Instruções", subtitle: "Como usar", color: "red", delay: 0 },
-              { icon: Zap, title: "Benefícios", subtitle: "Resultados", color: "green", delay: 0.1 },
-              { icon: Calendar, title: "Lembretes", subtitle: "Automação", color: "red", onClick: () => navigate("/lembretes"), delay: 0.2 },
-              { icon: Medal, title: "Progresso", subtitle: "Evolução", color: "green", delay: 0.3 }
+              { icon: Pill, title: "Instructions", subtitle: "How to use", color: "blue", delay: 0 },
+              { icon: Zap, title: "Benefits", subtitle: "Results", color: "cyan", delay: 0.1 },
+              { icon: Calendar, title: "Reminders", subtitle: "Automation", color: "blue", onClick: () => navigate("/reminders"), delay: 0.2 },
+              { icon: Medal, title: "Progress", subtitle: "Evolution", color: "cyan", delay: 0.3 }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -344,7 +390,7 @@ const Home = () => {
                 className={`transition-opacity delay-[${item.delay * 1000}ms]`}
               >
                 <Card 
-                  className={`bg-dark-elegant border-${item.color}-600/30 hover-energy cursor-pointer`}
+                  className={`bg-gradient-to-br from-slate-900/90 to-${item.color}-900/90 border-${item.color}-600/30 cursor-pointer backdrop-blur-sm`}
                   onClick={item.onClick}
                 >
                   <CardContent className="p-6 text-center">

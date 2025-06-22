@@ -12,28 +12,28 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   
   const navItems = [
-    { path: "/", icon: Home, label: "Início" },
-    { path: "/progresso", icon: LineChart, label: "Progresso" },
-    { path: "/exercicios", icon: Dumbbell, label: "Exercícios" },
-    { path: "/nitric-ia", icon: Bot, label: "Nitric IA" },
-    { path: "/lembretes", icon: Bell, label: "Lembretes" },
-    { path: "/perfil", icon: User, label: "Perfil" },
+    { path: "/", icon: Home, label: "Home" },
+    { path: "/progresso", icon: LineChart, label: "Progress" },
+    { path: "/exercicios", icon: Dumbbell, label: "Exercises" },
+    { path: "/nitric-ia", icon: Bot, label: "Nitric AI" },
+    { path: "/lembretes", icon: Bell, label: "Reminders" },
+    { path: "/perfil", icon: User, label: "Profile" },
   ];
 
   return (
     <div className="flex flex-col min-h-screen relative">
-      {/* Background gradients */}
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950"></div>
-      <div className="fixed top-0 left-0 w-[80vw] h-[40vh] bg-blue-800/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="fixed bottom-0 right-0 w-[50vw] h-[40vh] bg-purple-900/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+      {/* Background gradients with blue theme */}
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-slate-950 via-blue-950 to-cyan-950"></div>
+      <div className="fixed top-0 left-0 w-[80vw] h-[40vh] bg-blue-800/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="fixed bottom-0 right-0 w-[50vw] h-[40vh] bg-cyan-900/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
       
       {/* Main content */}
       <main className="flex-1 container max-w-4xl mx-auto pb-20 relative z-10">
         {children}
       </main>
       
-      {/* Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 h-16 bg-gradient-to-r from-gray-900 to-gray-800 border-t border-gray-800 shadow-lg z-20">
+      {/* Navigation with blue theme */}
+      <div className="fixed bottom-0 left-0 right-0 h-16 bg-gradient-to-r from-slate-900/95 to-blue-900/95 border-t border-blue-800 shadow-lg z-20 backdrop-blur-md">
         <div className="container max-w-4xl mx-auto h-full">
           <nav className="flex items-center justify-between h-full px-2">
             {navItems.map((item) => (
@@ -59,10 +59,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               href="https://getnitricboost.net/discovery#aff=Preciosa88"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center rounded-md p-1.5 text-white bg-gradient-to-r from-nitric-600 to-red-600 hover:from-nitric-700 hover:to-red-700 transition-all duration-300 shadow-lg"
+              className="flex flex-col items-center justify-center rounded-md p-1.5 text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg"
             >
               <ShoppingCart className="h-5 w-5 text-white" />
-              <span className="text-xs mt-0.5">Comprar</span>
+              <span className="text-xs mt-0.5">Buy</span>
             </a>
           </nav>
         </div>
