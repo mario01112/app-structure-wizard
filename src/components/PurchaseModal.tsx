@@ -49,9 +49,9 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose }) => {
 
           {/* Action buttons */}
           <div className="space-y-3">
-            {/* Watch Video Button */}
+            {/* Watch Video Button - Discovery Page */}
             <Button
-              onClick={() => handleOptionClick('https://getnitricboost.net/b?p=nb_1&b=93&fid=188&pg=1564')}
+              onClick={() => handleOptionClick('https://getnitricboost.net/discovery#aff=Preciosa88')}
               className="w-full h-14 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white border border-slate-600 transition-all duration-300 hover:scale-105"
             >
               <Play className="h-5 w-5 mr-3" />
@@ -61,11 +61,11 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose }) => {
 
             {/* Buy 1 Bottle */}
             <Button
-              onClick={() => handleOptionClick('https://elasticfunnels-cdn.b-cdn.net/93/assets/images/cards.webp')}
+              onClick={() => handleOptionClick('https://getnitricboost.net/b?p=nb_1&b=93&fid=188&pg=1564')}
               className="w-full h-14 bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 text-white transition-all duration-300 hover:scale-105 shadow-lg"
             >
               <ShoppingCart className="h-5 w-5 mr-3" />
-              <span className="text-lg font-semibold">Buy 1 Bottle</span>
+              <span className="text-lg font-semibold">🟢 Buy 1 Bottle</span>
               <ExternalLink className="h-4 w-4 ml-3 opacity-70" />
             </Button>
 
@@ -77,7 +77,7 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose }) => {
               <div className="flex items-center justify-center w-full">
                 <Star className="h-5 w-5 mr-3 text-cyan-400" />
                 <div className="text-center">
-                  <div className="text-lg font-bold">Buy 3 Bottles</div>
+                  <div className="text-lg font-bold">🔵 Buy 3 Bottles</div>
                   <div className="text-sm text-cyan-300 font-semibold">(Best Value)</div>
                 </div>
                 <ExternalLink className="h-4 w-4 ml-3 opacity-70" />
@@ -86,13 +86,13 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose }) => {
 
             {/* Buy 6 Bottles - Ultimate Pack */}
             <Button
-              onClick={() => handleOptionClick('https://getnitricboost.net/b?p=nb_1&b=93&fid=188&pg=1564')}
+              onClick={() => handleOptionClick('https://getnitricboost.net/b?p=nb_6&b=93&fid=188&pg=1564')}
               className="w-full h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white transition-all duration-300 hover:scale-105 shadow-xl border-2 border-blue-400"
             >
               <div className="flex items-center justify-center w-full">
                 <Crown className="h-5 w-5 mr-3 text-blue-400" />
                 <div className="text-center">
-                  <div className="text-lg font-bold">Buy 6 Bottles</div>
+                  <div className="text-lg font-bold">🟣 Buy 6 Bottles</div>
                   <div className="text-sm text-blue-300 font-semibold">(Ultimate Pack)</div>
                 </div>
                 <ExternalLink className="h-4 w-4 ml-3 opacity-70" />
